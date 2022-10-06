@@ -1,36 +1,33 @@
 import { useState } from "react";
-// import { Stack, Drawer, Box } from "@mui/material";
+import { Stack, Drawer, Box } from "@mui/material";
 import { categories } from "../utils/constant";
 
-// const selectedCategory = "New";
-
-const Sidebar = () => {
+const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
   return (
-    // <Stack
-    //   direction="row"
-    //   className="sidebar"
-    //   sx={{
-    //     overflowY: "auto",
-    //     height: { sx: "auto", md: "95%" },
-    //     flexDirection: { md: "column" },
-    //     backgroundColor: "#555",
-    //     p: 2,
-    //   }}
-    // >
-    //   {/* eslint-disable-next-line array-callback-return */}
-    //   {categories.map((cat) => (
-    //     <button
-    //       className="category-btn"
-    //       style={{
-    //         backgroundColor: cat.name === selectedCategory && "#555",
-    //       }}
-    //     >
-    //       <span>{cat.icon}</span>
-    //       <span>{cat.name}</span>
-    //     </button>
-    //   ))}
-    // </Stack>
-    <></>
+    <Stack
+      direction="row"
+      sx={{
+        overflowY: "auto",
+        height: { sx: "auto", md: "100%" },
+        flexDirection: { md: "column" },
+        backgroundColor: "#1B1B1B",
+        p: 2,
+      }}
+    >
+      {categories.map((cat) => (
+        <button
+          key={cat.id}
+          className="category-btn"
+          onClick={() => setSelectedCategory(cat.name)}
+          style={{
+            backgroundColor: cat.name === selectedCategory && "#212121",
+          }}
+        >
+          <span>{cat.icon}</span>
+          <span>{cat.name}</span>
+        </button>
+      ))}
+    </Stack>
   );
 };
 

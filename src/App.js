@@ -1,7 +1,6 @@
 import React from "react";
 import "../src/index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { StyledEngineProvider } from "@mui/material/styles";
 import {
   Navbar,
   Feed,
@@ -9,10 +8,19 @@ import {
   VideoDetail,
   SearchFeed,
 } from "./components";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
   return (
-    <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -22,7 +30,7 @@ function App() {
           <Route path="/search/searchTerm" exact element={<SearchFeed />} />
         </Routes>
       </BrowserRouter>
-    </StyledEngineProvider>
+    </ThemeProvider>
   );
 }
 
